@@ -1,0 +1,23 @@
+{
+    "name": "com.bigeti.patterns",
+    "version": "1.0.0",
+    "displayName": "Unity Patterns",
+    "description": "This package contains classes and interfaces to help me utilizing patterns I use for my Unity games.",
+    "dependencies": {},
+    "keywords": [
+        "controller",
+        "controllers",
+        "manager",
+        "managers",
+        "pattern",
+        "patterns",
+        "trigger",
+        "triggers",
+        "unity"
+    ],
+    "author": {
+        "name": "Ethem Kurt",
+        "email": "bigeti.ethem@gmail.com",
+        "url": "https://bigeti.de/"
+    }
+}
