@@ -73,7 +73,7 @@ namespace UnityPatterns.Triggers
             if
             (
 #if UNITY_EDITOR
-                !EditorApplication.isPlaying &&
+                EditorApplication.isPlaying &&
 #endif
                 !IsDetroyed
             )
