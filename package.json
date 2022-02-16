@@ -1,6 +1,6 @@
 {
     "name": "com.bigeti.patterns",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "displayName": "Unity Patterns",
     "description": "This package contains classes and interfaces to help me utilizing patterns I use for my Unity games.",
     "dependencies": {},

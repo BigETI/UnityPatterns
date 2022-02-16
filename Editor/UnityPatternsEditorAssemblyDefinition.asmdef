@@ -1,0 +1,20 @@
+{
+    "name": "UnityPatternsEditorAssemblyDefinition",
+    "rootNamespace": "",
+    "references": [
+        "GUID:93e247aed1f08d741aa7ec48770997e7",
+        "GUID:7ea637f12ee486146bd3500de600792c",
+        "GUID:c07277a83abd32d4ca23acd43cef53b0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

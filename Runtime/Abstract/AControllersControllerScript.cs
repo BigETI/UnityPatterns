@@ -9,7 +9,7 @@ namespace UnityPatterns.Controllers
     /// An abstract class that describes a controllers controller script
     /// </summary>
     /// <typeparam name="T">Own type</typeparam>
-    public class AControllersControllerScript<T> : AControllerScript where T : AControllersControllerScript<T>
+    public abstract class AControllersControllerScript<T> : AControllerScript where T : AControllersControllerScript<T>
     {
         /// <summary>
         /// Controllers

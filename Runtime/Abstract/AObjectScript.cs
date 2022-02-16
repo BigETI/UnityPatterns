@@ -8,7 +8,7 @@ namespace UnityPatterns.Objects
     /// <summary>
     /// An abstract class that describes an object script
     /// </summary>
-    public class AObjectScript : ScriptableObject, IObject
+    public abstract class AObjectScript : ScriptableObject, IObject
     {
         // ...
     }
