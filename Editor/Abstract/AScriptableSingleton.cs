@@ -9,8 +9,11 @@ namespace UnityPatternsEditor.ScriptableSingletons
     /// <summary>
     /// A class that describes a scriptable singleton
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class AScriptableSingleton<T> : ScriptableSingleton<T>, IScriptableSingleton<T> where T : ScriptableObject
+    /// <typeparam name="TScriptableObject">Scriptable object</typeparam>
+    public abstract class AScriptableSingleton<TScriptableObject> :
+        ScriptableSingleton<TScriptableObject>,
+        IScriptableSingleton<TScriptableObject>
+        where TScriptableObject : ScriptableObject
     {
         // ...
     }

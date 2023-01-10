@@ -9,8 +9,8 @@ namespace UnityPatterns.Managers
     /// <summary>
     /// An abstract class that describes a manager script
     /// </summary>
-    /// <typeparam name="T">Manager script type</typeparam>
-    public abstract class AManagerScript<T> : AControllerScript, IManager where T : AManagerScript<T>
+    /// <typeparam name="TManagerScript">Manager script type</typeparam>
+    public abstract class AManagerScript<TManagerScript> : AControllerScript, IManager where TManagerScript : AManagerScript<TManagerScript>
     {
         /// <summary>
         /// Is not destroying on load
@@ -21,7 +21,7 @@ namespace UnityPatterns.Managers
         /// <summary>
         /// Manager instance
         /// </summary>
-        public static T Instance { get; private set; }
+        public static TManagerScript Instance { get; private set; }
 
         /// <summary>
         /// Is not destroying on load
@@ -39,14 +39,18 @@ namespace UnityPatterns.Managers
         {
             if (!Instance)
             {
-                Instance = (T)this;
+                Instance = (TManagerScript)this;
                 if (isNotDestroyingOnLoad)
                 {
                     DontDestroyOnLoad(gameObject);
                 }
-                foreach (AManagerEventsControllerScript<T> manager_events_controller in FindObjectsOfType<AManagerEventsControllerScript<T>>(false))
+                foreach
+                (
+                    AManagerEventsControllerScript<TManagerScript> manager_events_controller in
+                        FindObjectsOfType<AManagerEventsControllerScript<TManagerScript>>(false)
+                )
                 {
-                    manager_events_controller.Manager = (T)this;
+                    manager_events_controller.Manager = (TManagerScript)this;
                 }
             }
             else
@@ -63,9 +67,9 @@ namespace UnityPatterns.Managers
             if (Instance == this)
             {
                 Instance = null;
-                foreach (AManagerEventsControllerScript<T> manager_events_controller in FindObjectsOfType<AManagerEventsControllerScript<T>>(false))
+                foreach (AManagerEventsControllerScript<TManagerScript> manager_events_controller in FindObjectsOfType<AManagerEventsControllerScript<TManagerScript>>(false))
                 {
-                    manager_events_controller.Manager = (T)this;
+                    manager_events_controller.Manager = (TManagerScript)this;
                 }
             }
         }

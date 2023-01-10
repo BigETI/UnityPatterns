@@ -8,18 +8,21 @@ namespace UnityPatterns.Controllers
     /// <summary>
     /// An abstract class that describes a manager events controller script
     /// </summary>
-    /// <typeparam name="T">Manager script type</typeparam>
-    public abstract class AManagerEventsControllerScript<T> : AControllerScript, IManagerEventsController<T> where T : AManagerScript<T>
+    /// <typeparam name="TManagerScript">Manager script type</typeparam>
+    public abstract class AManagerEventsControllerScript<TManagerScript> :
+        AControllerScript,
+        IManagerEventsController<TManagerScript>
+        where TManagerScript : AManagerScript<TManagerScript>
     {
         /// <summary>
         /// Manager
         /// </summary>
-        private T manager;
+        private TManagerScript manager;
 
         /// <summary>
         /// Manager
         /// </summary>
-        public T Manager
+        public TManagerScript Manager
         {
             get => manager;
             set
@@ -27,7 +30,7 @@ namespace UnityPatterns.Controllers
                 if (!manager && value)
                 {
                     manager = value;
-                    RegisterManagerEvents();
+                    RegisterManagerEvents(manager);
                 }
             }
         }
@@ -35,22 +38,24 @@ namespace UnityPatterns.Controllers
         /// <summary>
         /// Registers manager events
         /// </summary>
-        protected abstract void RegisterManagerEvents();
+        /// <param name="manager">Manager</param>
+        protected abstract void RegisterManagerEvents(TManagerScript manager);
 
         /// <summary>
         /// Unregisters manager events
         /// </summary>
-        protected abstract void UnregisterManagerEvents();
+        /// <param name="manager">Manager</param>
+        protected abstract void UnregisterManagerEvents(TManagerScript manager);
 
         /// <summary>
         /// Registers manager events (internal)
         /// </summary>
         private void RegisterManagerEventsInternal()
         {
-            if (!manager && AManagerScript<T>.Instance)
+            if (!manager && AManagerScript<TManagerScript>.Instance)
             {
-                manager = AManagerScript<T>.Instance;
-                RegisterManagerEvents();
+                manager = AManagerScript<TManagerScript>.Instance;
+                RegisterManagerEvents(manager);
             }
         }
 
@@ -61,7 +66,7 @@ namespace UnityPatterns.Controllers
         {
             if (manager)
             {
-                UnregisterManagerEvents();
+                UnregisterManagerEvents(manager);
                 manager = null;
             }
         }
